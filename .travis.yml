@@ -15,11 +15,12 @@ addons:
 
 os:
   - linux
-  - osx
+  # - osx
 
 compiler:
   - gcc
   - clang
+  - other
 
 env:
   global:
@@ -28,10 +29,10 @@ env:
     - CMAKE_CONFIGURATION=release BUILD_DIR=build
     - CMAKE_CONFIGURATION=debug BUILD_DIR=build-debug
 
-matrix:
-  exclude:
-  - os: osx
-    compiler: gcc
+# matrix:
+#   exclude:
+#   - os: osx
+#     compiler: gcc
 
 before_install:
   - if [ $TRAVIS_OS_NAME == osx ]; then brew update && brew install qt5 cppcheck; fi
